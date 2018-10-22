@@ -10,6 +10,23 @@ import UIKit
 
 fileprivate let homeCellId:String = "cellId"
 
+
+class BaseCell:UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews(){
+        
+    }
+}
+
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var barStyle = UIStatusBarStyle.lightContent
@@ -62,6 +79,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: homeCellId)
+        collectionView?.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
         
         setupBottomMenuBar()
         
@@ -106,7 +125,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
 }
 
-class VideoCell: UICollectionViewCell {
+class VideoCell: BaseCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -156,7 +175,7 @@ class VideoCell: UICollectionViewCell {
         return view
     }()
     
-    func setupViews(){
+    override func setupViews(){
         addSubview(thumbnailImgView)
         addSubview(userProfileImageView)
         addSubview(titleLabel)
