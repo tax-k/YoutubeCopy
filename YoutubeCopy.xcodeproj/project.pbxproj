@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60025F97217D79260000996D /* venom2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60025F95217D79260000996D /* venom2.jpg */; };
+		60025F98217D79260000996D /* venom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60025F96217D79260000996D /* venom.jpg */; };
+		60025F9A217D79C30000996D /* profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60025F99217D79C30000996D /* profile.jpg */; };
+		60025F9C217D8BF30000996D /* yt_logo_rgb_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 60025F9B217D8BF20000996D /* yt_logo_rgb_dark.png */; };
+		60025F9F217D98C00000996D /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60025F9E217D98C00000996D /* MenuBar.swift */; };
 		60EF7467217D5B7500CF67ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EF7466217D5B7500CF67ED /* AppDelegate.swift */; };
 		60EF7469217D5B7500CF67ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EF7468217D5B7500CF67ED /* ViewController.swift */; };
 		60EF746C217D5B7500CF67ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60EF746A217D5B7500CF67ED /* Main.storyboard */; };
 		60EF746E217D5B7500CF67ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60EF746D217D5B7500CF67ED /* Assets.xcassets */; };
 		60EF7471217D5B7500CF67ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60EF746F217D5B7500CF67ED /* LaunchScreen.storyboard */; };
+		60EF747A217D5ECE00CF67ED /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EF7479217D5ECE00CF67ED /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60025F95217D79260000996D /* venom2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venom2.jpg; sourceTree = "<group>"; };
+		60025F96217D79260000996D /* venom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venom.jpg; sourceTree = "<group>"; };
+		60025F99217D79C30000996D /* profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile.jpg; sourceTree = "<group>"; };
+		60025F9B217D8BF20000996D /* yt_logo_rgb_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yt_logo_rgb_dark.png; sourceTree = "<group>"; };
+		60025F9E217D98C00000996D /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		60EF7463217D5B7500CF67ED /* YoutubeCopy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeCopy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60EF7466217D5B7500CF67ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60EF7468217D5B7500CF67ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +33,7 @@
 		60EF746D217D5B7500CF67ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60EF7470217D5B7500CF67ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60EF7472217D5B7500CF67ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60EF7479217D5ECE00CF67ED /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60025F9D217D98A40000996D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				60025F9E217D98C00000996D /* MenuBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		60EF745A217D5B7500CF67ED = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +74,28 @@
 		60EF7465217D5B7500CF67ED /* YoutubeCopy */ = {
 			isa = PBXGroup;
 			children = (
+				60025F9D217D98A40000996D /* View */,
+				60EF7478217D5EBF00CF67ED /* Style */,
 				60EF7466217D5B7500CF67ED /* AppDelegate.swift */,
+				60025F96217D79260000996D /* venom.jpg */,
+				60025F99217D79C30000996D /* profile.jpg */,
+				60025F95217D79260000996D /* venom2.jpg */,
 				60EF7468217D5B7500CF67ED /* ViewController.swift */,
 				60EF746A217D5B7500CF67ED /* Main.storyboard */,
+				60025F9B217D8BF20000996D /* yt_logo_rgb_dark.png */,
 				60EF746D217D5B7500CF67ED /* Assets.xcassets */,
 				60EF746F217D5B7500CF67ED /* LaunchScreen.storyboard */,
 				60EF7472217D5B7500CF67ED /* Info.plist */,
 			);
 			path = YoutubeCopy;
+			sourceTree = "<group>";
+		};
+		60EF7478217D5EBF00CF67ED /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				60EF7479217D5ECE00CF67ED /* Colors.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +157,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60025F97217D79260000996D /* venom2.jpg in Resources */,
+				60025F9A217D79C30000996D /* profile.jpg in Resources */,
+				60025F9C217D8BF30000996D /* yt_logo_rgb_dark.png in Resources */,
 				60EF7471217D5B7500CF67ED /* LaunchScreen.storyboard in Resources */,
+				60025F98217D79260000996D /* venom.jpg in Resources */,
 				60EF746E217D5B7500CF67ED /* Assets.xcassets in Resources */,
 				60EF746C217D5B7500CF67ED /* Main.storyboard in Resources */,
 			);
@@ -137,6 +175,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				60EF7469217D5B7500CF67ED /* ViewController.swift in Sources */,
+				60EF747A217D5ECE00CF67ED /* Colors.swift in Sources */,
+				60025F9F217D98C00000996D /* MenuBar.swift in Sources */,
 				60EF7467217D5B7500CF67ED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
