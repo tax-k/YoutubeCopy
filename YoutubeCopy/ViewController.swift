@@ -33,65 +33,68 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return barStyle
     }
-
+    
+    func setUpNavigationBarTitleImage() {
+        
+        let navController = navigationController!
+        
+        let image = UIImage(named: "yt_logo_rgb_dark.png")!
+        let imageView = UIImageView(image: image)
+        
+        let bannerWidth = navController.navigationBar.frame.size.width
+        let bannerHeight = navController.navigationBar.frame.size.height
+        
+        imageView.frame = CGRect(x: 0, y: 0, width: bannerWidth, height: bannerHeight)
+        imageView.contentMode = .scaleAspectFit
+        
+        navigationItem.titleView = imageView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         collectionView?.backgroundColor = Colors.darkBackColor
         navigationItem.title = "Home"
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = "Home"
-        titleLabel.textColor = UIColor.white
-//        titleLabel.font = UIFont.systemFont(ofSize: 20)
-        
-        let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        var logoView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-        logoView.translatesAutoresizingMaskIntoConstraints = false
-        customTitleView.addSubview(logoView)
-        let titleImageWidth = view.frame.width
-        let titleImageHeight = view.frame.height
-        logoView.contentMode = .scaleAspectFit
-        logoView.image = UIImage(named: "yt_logo_rgb_dark.png")
-        logoView.backgroundColor = UIColor.red
-        
-
-        if #available(iOS 11.0, *) {
-//            logoView.widthAnchor.constraint(equalToConstant: titleImageWidth).isActive = true
-//            logoView.heightAnchor.constraint(equalToConstant: titleImageHeight).isActive = true
-            
-            
-        } else {
-            logoView = UIImageView(frame: CGRect(x: 0, y: 0, width: titleImageWidth, height: titleImageHeight))
-        }
-        
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 39, height: 39))
-        imageView.contentMode = .scaleAspectFit
-        let image = UIImage(named: "yt_logo_rgb_dark.png")
-        imageView.image = image
-        navigationItem.titleView = imageView
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        let widthConstraint = NSLayoutConstraint(item: imageView, attribute: .width, relatedBy:.equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
-        let heightConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy:.equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
-        
-        navigationItem.titleView?.addConstraints([widthConstraint, heightConstraint])
+        setUpNavigationBarTitleImage()
         
         
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: homeCellId)
-        collectionView?.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
+        collectionView?.contentInset = UIEdgeInsetsMake(40, 0, 50, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(40, 0, 50, 0)
         
         setupBottomMenuBar()
+        setupTopMenuBar()
         
         barStyle = .lightContent
         setNeedsStatusBarAppearanceUpdate()
+    }
+    let topBar:navBarView = {
+        let bar = navBarView()
+        return bar
+    }()
+    
+    func setupTopMenuBar(){
+        view.addSubview(topBar)
+        topBar.translatesAutoresizingMaskIntoConstraints = false
+        topBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        topBar.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        topBar.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        topBar.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
     }
     
     let menuBar:MenuBar = {
         let bar = MenuBar()
         return bar
     }()
+    
+    
     func setupBottomMenuBar(){
         view.addSubview(menuBar)
 //        view.addConstraintWithFormat(format: "H:|[v0]|", views: menuBar)
@@ -122,6 +125,50 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+class navBarView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    
+        backgroundColor = Colors.darkBackColor
+        setupViews()
+    }
+    
+    let logoImageView:UIImageView = {
+        let imageView = UIImageView()
+        imageView.frame = CGRect(x: 20, y: 35, width: 100, height: 22)
+        imageView.image = UIImage(named: "yt_logo_rgb_dark.png")!
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    let separatorView:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.lightGray
+        view.alpha = 0.3
+        view.layer.masksToBounds = false
+        view.layer.shadowRadius = 4
+        view.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        view.layer.shadowOpacity = 0.5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews(){
+        addSubview(logoImageView)
+        addSubview(separatorView)
+        
+        addConstraint(NSLayoutConstraint(item: separatorView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: separatorView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0))
+        
+        addConstraint(NSLayoutConstraint(item: separatorView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: separatorView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,multiplier: 1, constant: 1))
     }
 }
 
