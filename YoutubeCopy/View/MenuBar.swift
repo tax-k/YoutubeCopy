@@ -48,7 +48,6 @@ class MenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         cell.backgroundColor = Colors.darkBackColor
         
-        
         return cell
     }
     
