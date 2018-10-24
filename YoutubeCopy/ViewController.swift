@@ -66,8 +66,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: homeCellId)
-        collectionView?.contentInset = UIEdgeInsetsMake(40, 0, 50, 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(40, 0, 50, 0)
+        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 50, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 50, 0)
         
         setupBottomMenuBar()
         setupTopMenuBar()
